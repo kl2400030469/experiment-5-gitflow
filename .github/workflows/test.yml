@@ -1,0 +1,21 @@
+
+name: Gitflow CI
+
+on:
+  push:
+    branches: [main, develop, 'feature/**']
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run basic checks
+        run: |
+          test -f README.md
+          test -f conflict.txt
+          echo "All checks passed!"
